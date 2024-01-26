@@ -1,0 +1,263 @@
+<odoo>
+    <data>
+        <record id="user_paco" model="res.users">
+            <field name="name">Paco Fernández</field>
+            <field name="login">paco</field>
+            <field name="password">paco</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_manteni_user'), ref('base.group_user')])]" />
+        </record>
+
+        <record id="user_juan" model="res.users">
+            <field name="name">Juan Pardo</field>
+            <field name="login">juan</field>
+            <field name="password">juan</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_manteni_manager'), ref('base.group_user')])]" />
+        </record>
+
+        <record id="user_ramiro" model="res.users">
+            <field name="name">Ramiro Kuay</field>
+            <field name="login">ramiro</field>
+            <field name="password">ramiro</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_manteni_user'), ref('base.group_user')])]" />
+        </record>
+
+        <!--Employees-->
+
+        <record id="employee_paco" model="hr.employee">
+            <field name="name">Paco Fernández</field>
+            <field name="user_id" ref="user_paco"/>
+            <field name="department_id" ref="dep_maintenance"/>
+            <field name="job_id" ref="job_maintenance_officer"/>
+            <field name="work_location">Barcelona</field>
+            <field name="work_phone">+3281813700</field>
+            <field name="work_email">paco@odoo.com</field>
+        </record>
+
+        <record id="employee_juan" model="hr.employee">
+            <field name="name">Juan Pardo</field>
+            <field name="user_id" ref="user_juan"/>
+            <field name="department_id" ref="dep_maintenance"/>
+            <field name="job_id" ref="job_maintenance_manager"/>
+            <field name="work_location">Barcelona</field>
+            <field name="work_phone">+3281813700</field>
+            <field name="work_email">juan@odoo.com</field>
+        </record>
+
+        <record id="employee_ramiro" model="hr.employee">
+            <field name="name">Ramiro Kuay</field>
+            <field name="user_id" ref="user_ramiro"/>
+            <field name="department_id" ref="dep_maintenance"/>
+            <field name="job_id" ref="job_maintenance_manager"/>
+            <field name="work_location">Barcelona</field>
+            <field name="work_phone">+3281813700</field>
+            <field name="work_email">ramiro@odoo.com</field>
+        </record>
+
+        <!-- Machinary seller -->
+
+        <record id="res_partner_557" model="res.partner">
+            <field name="name">Maquinaria Industrial Cucurella</field>
+            <field eval="[(6, 0, [ref('base.res_partner_category_11')])]" name="category_id"/>
+            <field name="machinery_seller">1</field>
+            <field name="is_company">1</field>
+            <field name="street">Calle Mayor</field>
+            <field name="city">Talavera de la Reina</field>
+            <field name="zip">08021</field>
+            <field name="country_id" ref="base.es"/>
+            <field name="email">cucurella@cucurella.com</field>
+            <field name="phone">(623)-853-7197</field>
+            <field name="website">http://www.cucurella.com</field>
+            <field name="image_1920" type="base64" file="manteni/static/description/cucurella.png"/>
+        </record>
+
+        <!-- Machines -->
+
+        <record id="torno1" model="manteni.machine">
+            <field name="name">Torno Wilkinson 1</field>
+            <field name="serial">TW-001</field>
+            <field name="state">on_use</field>
+            <field name="date_begin">2017-05-01</field>
+            <field name="suplier_id" ref="res_partner_557"/>
+            <field name="hours_maint">1000</field>
+        </record>
+
+        <record id="torno2" model="manteni.machine">
+            <field name="name">Torno Wilkinson 2</field>
+            <field name="serial">TW-002</field>
+            <field name="state">on_use</field>
+            <field name="date_begin">2017-05-01</field>
+            <field name="suplier_id" ref="res_partner_557"/>
+            <field name="hours_maint">1000</field>
+        </record>
+
+        <record id="torno3" model="manteni.machine">
+            <field name="name">Torno Wilkinson 3</field>
+            <field name="serial">TW-003</field>
+            <field name="state">on_use</field>
+            <field name="date_begin">2017-05-01</field>
+            <field name="suplier_id" ref="res_partner_557"/>
+            <field name="hours_maint">1000</field>
+        </record>
+
+        <record id="torno4" model="manteni.machine">
+            <field name="name">Torno Wilkinson 4</field>
+            <field name="serial">TW-004</field>
+            <field name="state">on_use</field>
+            <field name="date_begin">2017-05-01</field>
+            <field name="suplier_id" ref="res_partner_557"/>
+            <field name="hours_maint">1000</field>
+        </record>
+
+        <record id="torno5" model="manteni.machine">
+            <field name="name">Torno Wilkinson 5</field>
+            <field name="serial">TW-005</field>
+            <field name="state">on_use</field>
+            <field name="date_begin">2017-05-01</field>
+            <field name="suplier_id" ref="res_partner_557"/>
+            <field name="hours_maint">1000</field>
+        </record>
+
+        <record id="torno6" model="manteni.machine">
+            <field name="name">Torno Wilkinson 6</field>
+            <field name="serial">TW-006</field>
+            <field name="state">on_use</field>
+            <field name="date_begin">2017-05-01</field>
+            <field name="suplier_id" ref="res_partner_557"/>
+            <field name="hours_maint">1000</field>
+        </record>
+
+        <!--Maitenance programs-->
+
+        <record id="program0" model="manteni.program">
+            <field name="name">Gama elèctrica tornos</field>
+        </record>
+
+        <record id="program1" model="manteni.program">
+            <field name="name">Gama mecànica tornos</field>
+        </record>
+
+
+        <!--Maitenance instructions-->
+
+        <record id="instruction1" model="manteni.program.instruction">
+            <field name="name">Revisió fusibles</field>
+            <field name="description">Revisar si els fusibles funcionen</field>
+            <field name="program_id" ref="program0"/>
+        </record>
+
+        <record id="instruction2" model="manteni.program.instruction">
+            <field name="name">Engrasat</field>
+            <field name="description">Engrasar totes les juntes</field>
+            <field name="program_id" ref="program1"/>
+        </record>
+
+        <record id="instruction0" model="manteni.program.instruction">
+            <field name="name">Comprobació de continuitat</field>
+            <field name="description">Revisar la continuitat amb un tester</field>
+            <field name="program_id" ref="program0"/>
+        </record>
+
+        <!-- Workorders -->
+        <record id="workorder1" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()"/>
+            <field name="description">Manteniment ordinari elèctric</field>
+            <field name="employee_id" ref="employee_paco"/>
+            <field name="employee_user_id" ref="user_paco" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program0"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu elèctric tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder2" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=1)"/>
+            <field name="description">Manteniment ordinari elèctric</field>
+            <field name="employee_id" ref="employee_paco"/>
+            <field name="employee_user_id" ref="user_paco" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program0"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu elèctric tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder3" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=2)"/>
+            <field name="description">Manteniment ordinari elèctric</field>
+            <field name="employee_id" ref="employee_paco"/>
+            <field name="employee_user_id" ref="user_paco" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program0"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu elèctric tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder4" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=3)"/>
+            <field name="description">Manteniment ordinari elèctric</field>
+            <field name="employee_id" ref="employee_paco"/>
+            <field name="employee_user_id" ref="user_paco" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program0"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu elèctric tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder5" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=4)"/>
+            <field name="description">Manteniment ordinari mecànic</field>
+            <field name="employee_id" ref="employee_ramiro"/>
+            <field name="employee_user_id" ref="user_ramiro" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program1"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu mecànic tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder6" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=5)"/>
+            <field name="description">Manteniment ordinari mecànic</field>
+            <field name="employee_id" ref="employee_ramiro"/>
+            <field name="employee_user_id" ref="user_ramiro" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program1"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu mecànic tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder7" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=6)"/>
+            <field name="description">Manteniment ordinari mecànic</field>
+            <field name="employee_id" ref="employee_ramiro"/>
+            <field name="employee_user_id" ref="user_ramiro" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program1"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu mecànic tornos</field>
+            <field name="type">preventive</field>
+        </record>
+        <record id="workorder8" model="manteni.workorder">
+            <field name="date_begin" eval="datetime.today()-timedelta(days=7)"/>
+            <field name="description">Manteniment ordinari mecànic</field>
+            <field name="employee_id" ref="employee_ramiro"/>
+            <field name="employee_user_id" ref="user_ramiro" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno1'), ref('torno2'), ref('torno3'), ref('torno4'), ref('torno5'), ref('torno6')])]"/>
+            <field name="program_id" ref="program1"/>
+            <field name="state">opened</field>
+            <field name="name">Preventiu mecànic tornos</field>
+            <field name="type">preventive</field>
+        </record>
+
+        <record id="workorder9" model="manteni.workorder">
+            <field name="name">Reparación torno 4</field>
+            <field name="date_begin" eval="datetime.today()-timedelta(days=1)"/>
+            <field name="description">El torno 4 fa soroll al moure's, sembla ser què té un rodament trencat.</field>
+            <field name="employee_id" ref="employee_paco"/>
+            <field name="employee_user_id" ref="user_paco" />
+            <field name="machine_ids" eval="[(6, 0, [ref('torno4')])]"/>
+            <field name="state">closed</field>
+            <field name="type">corrective</field>
+            <field name="date_end">2017-09-01</field>
+            <field name="closing_info">Se procede al cambio del rodamiento</field>
+        </record>
+    </data>
+</odoo>

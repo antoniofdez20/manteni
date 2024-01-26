@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+    <record model="ir.module.category" id="module_category_manteni">
+        <field name="name">Maintenance</field>
+        <field name="description">Helps you manage your factory's industrial maintenance</field>
+        <field name="sequence">104</field>
+    </record>
+    <record id="group_manteni_user" model="res.groups">
+        <field name="name">Maintenance Officer</field>
+        <field name="category_id" ref="module_category_manteni"/>
+    </record>
+
+    <record id="group_manteni_manager" model="res.groups">
+        <field name="name">Maintenance Manager</field>
+        <field name="category_id" ref="module_category_manteni"/>
+        <field name="implied_ids" eval="[(4, ref('group_manteni_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="view_your_own_workorders" model="ir.rule">
+        <field name="name">Only view your own workorders</field>
+        <field name="model_id" ref="model_manteni_workorder"/>
+        <field name="groups" eval="[(4, ref('group_manteni_user'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0" />
+        <field name="domain_force">[('employee_user_id','=',user.id)]</field>
+    </record>
+
+    <record id="view_all_workorders" model="ir.rule">
+        <field name="name">Manager views all workorders</field>
+        <field name="model_id" ref="model_manteni_workorder"/>
+        <field name="groups" eval="[(4, ref('group_manteni_manager'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0" />
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+
+    </data>
+</odoo>

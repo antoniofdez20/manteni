@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+        <report
+            id="report_workorder"
+            model="manteni.workorder"
+            string="Workorder Report"
+            name="manteni.report_workorder_view"
+            file="manteni.report_workorder"
+            report_type="qweb-pdf" />
+        <template id="report_workorder_view">
+            <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+            <div class="page">
+            <div class="container-fluid">
+                <h2 class="text-center mt32">
+                    Workorder:
+                    <span t-field="doc.name"/>
+                </h2>
+                <div class="row mt32 mb32">
+                    <div class="col-7">
+                    </div>
+                    <div class="col-3">
+                        <p class="text-right">
+                            Workorder no:</p>
+                        <p class="text-right">
+                            Open date:</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-right">
+                            <span t-field="doc.id"/></p>
+                        <p class="text-right">
+                            <span t-field="doc.date_begin"/></p>
+                    </div>
+                </div>
+
+               <div class="row mt32 mb32 border p-2">
+                   <div class="col-12">
+                        <t t-if="doc.type == 'preventive'">
+                            <p><strong>Maintenance type: </strong>Preventive</p>
+                            <p><strong>Program: </strong><span t-field="doc.program_id"/></p>
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                        <th>Instructions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.program_id.instruction_ids" t-as="instruction">
+                                    <td><span t-field="instruction.name"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        </t>
+                        <t t-else=""><p><strong>Maintenance type: </strong>Corrective</p></t>
+                   </div>
+
+               </div>
+                <div class="row mt3 mb3">
+                    <div class="col">
+                    <p>
+                       <strong>Employee:</strong>
+                       <span t-field="doc.employee_id"/>
+                    </p>
+                    </div>
+                </div>
+               <div class="row mt32 mb32">
+                   <div class="col-12">
+                        <p><strong>Description</strong></p>
+                        <p t-field="doc.description"/>
+                   </div>
+               </div>
+               <div class="row mt32 mb32">
+                   <div class="col-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                        <th>Machines</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.machine_ids" t-as="machine">
+                                    <td><span t-field="machine.name"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                   </div>
+               </div>
+               <div class="row mt32 border p-2">
+                    <div class="col-12" t-if="doc.date_end">
+                        <p><strong>Close date</strong></p>
+                         <p t-field="doc.date_end"/>
+                        <p><strong>Closing text</strong></p>
+                        <p t-field="doc.closing_info"/>
+                   </div>
+               </div>
+               <div class="row mt64 mb32">
+                    <div class="col-4">
+                        <p><strong>Worker's signature</strong></p>
+                        <div t-field="doc.employee_id"/>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4 text-right">
+                        <p><strong>Manager's signature</strong></p>
+                        <div> </div>
+                    </div>
+               </div>
+            </div>
+            </div>
+            </t>
+            </t>
+            </t>
+        </template>
+    </data>
+</odoo>

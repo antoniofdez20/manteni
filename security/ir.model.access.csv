@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manteni_machine_manager,manteni.machine.manager,model_manteni_machine,group_manteni_manager,1,1,1,1
+access_manteni_machine_user,manteni.machine.user,model_manteni_machine,group_manteni_user,1,0,0,0
+access_manteni_program_manager,manteni.program.manager,model_manteni_program,group_manteni_manager,1,1,1,1
+access_manteni_program_user,manteni.program.user,model_manteni_program,group_manteni_user,1,0,0,0
+access_manteni_program_instruction_manger,manteni.program.instruction.manager,model_manteni_program_instruction,group_manteni_manager,1,1,1,1
+access_manteni_program_instruction_user,manteni.program.instruction.user,model_manteni_program_instruction,group_manteni_user,1,0,0,0
+access_manteni_workorder_manager,manteni.workorder.manager,model_manteni_workorder,group_manteni_manager,1,1,1,1
+access_manteni_workorder_user,manteni.workorder.user,model_manteni_workorder,group_manteni_user,1,1,0,0
+access_hr_employee_manager,hr.employee.user,hr.model_hr_employee,group_manteni_user,1,0,0,0
+access_hr_employee_category_manager,hr.employee.category.user,hr.model_hr_employee_category,group_manteni_user,1,0,0,0

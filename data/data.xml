@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <!--Department-->
+
+      <record id="dep_maintenance" model="hr.department">
+          <field name="name">Maintenance</field>
+      </record>
+
+        <!--Jobs-->
+
+      <record id="job_maintenance_manager" model="hr.job">
+          <field name="name">Maintenance Manager</field>
+          <field name="department_id" ref="dep_maintenance"/>
+      </record>
+
+      <record id="job_maintenance_officer" model="hr.job">
+          <field name="name">Maintenance Officer</field>
+          <field name="department_id" ref="dep_maintenance"/>
+      </record>
+
+    </data>
+</odoo>
